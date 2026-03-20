@@ -1,5 +1,8 @@
 # AIS BinaryBroadcastMessage parser
 
+TLDR: Parser for BinaryBroadcastMessage sub-messages, to be used
+with the `ais` crate.
+
 Ships periodically broadcast their positions and other data using
 small packets over VHF using a protocol called AIS.
 
