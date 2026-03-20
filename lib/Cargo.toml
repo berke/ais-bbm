@@ -1,0 +1,17 @@
+[package]
+name = "ais-bbm"
+edition = "2024"
+version.workspace = true
+authors.workspace = true
+# license-file.workspace = true
+# readme.workspace = true
+description.workspace = true
+
+[features]
+
+[dependencies]
+ais = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]
+fastrand = { workspace = true }

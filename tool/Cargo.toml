@@ -1,0 +1,11 @@
+[package]
+name = "ais-bbm-tool"
+edition = "2024"
+version.workspace = true
+authors.workspace = true
+
+[dependencies]
+ais = { workspace = true }
+ais-bbm = { workspace = true }
+anyhow = { workspace = true }
+pico-args = "0.5.0"
