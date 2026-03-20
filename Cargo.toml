@@ -9,6 +9,7 @@ authors = ["Berke DURAK <bd@exhrd.fr>"]
 description = "AIS Binary Broadcast Message decoder"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
+repository = "https://github.com/berke/ais-bbm"
 
 [workspace.dependencies]
 ais = "0.12.0"
