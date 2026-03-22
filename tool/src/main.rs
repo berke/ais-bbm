@@ -57,6 +57,9 @@ fn main()->Result<()> {
                                         AisBbm::Environmental(env) => {
                                             println!("ENV {:#?}",env);
                                         },
+                                        AisBbm::MeteoHydro(mhy) => {
+                                            println!("MHY {:#?}",mhy);
+                                        },
                                         AisBbm::Unhandled => {
                                             if verbose {
                                                 eprintln!("UNHANDLED {:?}",msg);

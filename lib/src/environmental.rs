@@ -70,31 +70,6 @@ const REPORT_SIZE : usize = 112;
 //  1 Station ID
 // 10 Air gap / air draft
 
-fn to_ll(p:u32,x:u32)->f64 {
-    let mut y = x as i32;
-    let s = 1 << (p - 1);
-    if y >= s {
-        y -= 2*s;
-    }
-    y as f64/60e4
-}
-
-fn to_range(s:f64,x_bot:u32,x_top:u32,x:u32)->f64 {
-    if x == x_top {
-        f64::INFINITY
-    } else if x < x_bot || x > x_top {
-        f64::NAN
-    } else {
-        x as f64*s
-    }
-}
-
-const ITU : &[u8] = b"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_ !\"#$%&'()*+,-./0123456789:;<=>?";
-
-fn itu_to_char(x:u8)->char {
-    ITU[x as usize].into()
-}
-
 impl Environmental {
     pub fn parse(msg:&BinaryBroadcastMessage)->Result<Self> {
         let mut u = Bits::from(&msg.data[..]);
@@ -113,8 +88,8 @@ impl Environmental {
                 match report_type {
                     0 => {
                         // Site location
-                        let longitude = to_ll(28,u.bits::<u32>(28)?);
-                        let latitude = to_ll(27,u.bits::<u32>(27)?);
+                        let longitude = to_ll(28,1e4,u.bits::<u32>(28)?);
+                        let latitude = to_ll(27,1e4,u.bits::<u32>(27)?);
                         let altitude = to_range(0.1,0,2001,u.bits::<u32>(11)?);
                         let owner = u.bits::<u8>(4)?;
                         let data_timeout = u.bits::<u8>(3)?;
