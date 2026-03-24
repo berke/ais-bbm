@@ -55,11 +55,16 @@ impl<'a> Bits<'a> {
         T: From<u8> + BitOrAssign<T> + ShlAssign<u32>
     {
         let mut m = m0;
-        let mut x = 0.into();
+        let mut x : T = 0.into();
+        let nbit : u32 = (std::mem::size_of::<T>() * 8) as u32;
         while m > 0 {
             self.ensure()?;
             let p = m.min(self.n);
-            x <<= p;
+            if p >= nbit {
+                x = 0.into();
+            } else {
+                x <<= p;
+            }
             let mut y = self.h >> (self.n - p);
             if p < 8 {
                 y &= (1 << p) - 1;
