@@ -159,7 +159,9 @@ impl MeteoHydro {
 	let salinity = to_range(0.1,0,500,u.bits::<u32>(9)?);
 	let ice = u.bits::<u8>(2)?.try_into()?;
 	let spare = u.bits::<u16>(10)?;
-	assert!(u.is_empty());
+        if !u.is_empty() {
+            bail!("Trailing bits");
+        }
 	Ok(Self {
 	    longitude,
 	    latitude,
