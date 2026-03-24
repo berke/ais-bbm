@@ -1,5 +1,5 @@
 pub fn to_signed(p:u32,x:u32)->i32 {
-    let mut y = x as i32;
+    let y = x as i32;
     let s = 1 << (p - 1);
     if y >= s {
         y - 2*s

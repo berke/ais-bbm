@@ -10,6 +10,7 @@ use ais::{
 };
 use anyhow::{
     bail,
+    Error,
     Result,
 };
 
