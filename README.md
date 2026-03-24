@@ -25,9 +25,17 @@ other hand, it seems that the BBM messages are poorly standardized and
 basically a huge mess.  (Not my opinion, but what I've read.)
 
 This crate implements a `BinaryBroadcastMessage` decoder, currently
-only for the "Environmental" packets (DAC 1, FID 26), such as those
-transmitted by the "air gap" (i.e. sea level height) sensor placed at
-the Lion's Gate bridge.
+only for the following packets:
+
+| BBM packet type                    | DAC | FID |
+|------------------------------------|-----|-----|
+| Environmental                      | 1   | 26  |
+| Meteorology and Hydrology          | 1   | 31  |
+| Inland ship and static voyage info | 200 | 10  |
+
+For example, environmental BMM packets (DAC=1, FID=26) are transmitted
+by the "air gap" (i.e. sea level height) sensor placed at the Lion's
+Gate bridge.
 
 ## Usage
 
